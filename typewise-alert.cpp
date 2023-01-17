@@ -20,29 +20,10 @@ BreachType inferBreach(double value, Limits limit)
   return NORMAL;
 }
 
-// int getTemperatureLimit(CoolingType coolingType)
-// {
-//   return coolingTypeLimits[coolingType].lowerLimit;
-// }
-
 BreachType classifyTemperatureBreach(
     CoolingType coolingType, double temperatureInC)
 {
   Limits temperatureLimit;
-  // switch(coolingType) {
-  //   case PASSIVE_COOLING:
-  //     temperatureLimit.lowerLimit = 0;
-  //     temperatureLimit.upperLimit = 35;
-  //     break;
-  //   case HI_ACTIVE_COOLING:
-  //     temperatureLimit.lowerLimit = 0;
-  //     temperatureLimit.upperLimit = 45;
-  //     break;
-  //   case MED_ACTIVE_COOLING:
-  //     temperatureLimit.lowerLimit = 0;
-  //     temperatureLimit.upperLimit = 40;
-  //     break;
-  // }
 
   return inferBreach(temperatureInC, temperatureLimits[coolingType].at(0), temperatureLimits[coolingType].at(1));
 }
@@ -86,7 +67,7 @@ void sendToEmail(BreachType breachType)
     std::cout <<"To: "<<recepient<<"\n";
     std::cout <<"Hi, the temperature is too high\n";
     break;
-  case NORMAL:
+  default:
     break;
   }
 }
