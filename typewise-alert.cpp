@@ -1,6 +1,4 @@
 #include "typewise-alert.h"
-#include <stdio.h>
-#include <vector>
 
 std::map<CoolingType, std::vector<int>> temperatureLimits = {
     {PASSIVE_COOLING, {0, 35}},
@@ -28,8 +26,6 @@ BreachType classifyTemperatureBreach(
   return inferBreach(temperatureInC, temperatureLimits[coolingType].at(0), temperatureLimits[coolingType].at(1));
 }
 
-
-
 void checkAndAlert(
     AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC)
 {
@@ -51,7 +47,7 @@ void checkAndAlert(
 void sendToController(BreachType breachType)
 {
   const unsigned short header = 0xfeed;
-  std::cout <<header<<" : " <<breachType <<"\n";
+  std::cout << header << " : " << breachType << "\n";
 }
 
 void sendToEmail(BreachType breachType)
@@ -60,12 +56,12 @@ void sendToEmail(BreachType breachType)
   switch (breachType)
   {
   case TOO_LOW:
-    std::cout <<"To: "<<recepient<<"\n";
-    std::cout <<"Hi, the temperature is too low\n";
+    std::cout << "To: " << recepient << "\n";
+    std::cout << "Hi, the temperature is too low\n";
     break;
   case TOO_HIGH:
-    std::cout <<"To: "<<recepient<<"\n";
-    std::cout <<"Hi, the temperature is too high\n";
+    std::cout << "To: " << recepient << "\n";
+    std::cout << "Hi, the temperature is too high\n";
     break;
   default:
     break;
