@@ -1,7 +1,8 @@
 #include "typewise-alert.h"
 #include <stdio.h>
+#include <vector>
 
-std::map<CoolingType, Limits> coolingTypeLimits = {
+std::map<CoolingType, std::vector<int>> temperatureLimits = {
     {PASSIVE_COOLING, {0, 35}},
     {HI_ACTIVE_COOLING, {0, 45}},
     {MED_ACTIVE_COOLING, {0, 40}}};
@@ -17,6 +18,11 @@ BreachType inferBreach(double value, Limits limit)
     return TOO_HIGH;
   }
   return NORMAL;
+}
+
+int getTemperatureLimit(CoolingType coolingType)
+{
+  return coolingTypeLimits[coolingType].lowerLimit;
 }
 
 BreachType classifyTemperatureBreach(
@@ -36,8 +42,9 @@ BreachType classifyTemperatureBreach(
   //     temperatureLimit.lowerLimit = 0;
   //     temperatureLimit.upperLimit = 40;
   //     break;
-}
-return inferBreach(temperatureInC, temperatureLimit);
+  // }
+
+  return inferBreach(temperatureInC, temperatureLimits[coolingType].at(0), temperatureLimits[coolingType].at(1));
 }
 
 void checkAndAlert(
