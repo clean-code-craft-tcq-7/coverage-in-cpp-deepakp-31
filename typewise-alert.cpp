@@ -20,10 +20,10 @@ BreachType inferBreach(double value, Limits limit)
   return NORMAL;
 }
 
-int getTemperatureLimit(CoolingType coolingType)
-{
-  return coolingTypeLimits[coolingType].lowerLimit;
-}
+// int getTemperatureLimit(CoolingType coolingType)
+// {
+//   return coolingTypeLimits[coolingType].lowerLimit;
+// }
 
 BreachType classifyTemperatureBreach(
     CoolingType coolingType, double temperatureInC)
