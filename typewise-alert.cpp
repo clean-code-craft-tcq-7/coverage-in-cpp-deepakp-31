@@ -2,8 +2,8 @@
 
 std::map<CoolingType, std::vector<int>> temperatureLimits = {
     {PASSIVE_COOLING, {0, 35}},
-    {HI_ACTIVE_COOLING, {0, 45}},
-    {MED_ACTIVE_COOLING, {0, 40}}};
+    {MED_ACTIVE_COOLING, {0, 40}},
+    {HI_ACTIVE_COOLING, {0, 45}}};
 
 BreachType inferBreach(double value, Limits limit)
 {
